@@ -1,22 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TareaListas from "./components/tareaListas.js";
+import TareaFormularios from "./components/tareaFormularios.js";
 function App() {
+  //  const estadoTareas = useSelector(state => state.tareas) //de todo el estado quiero acceder a el estado llamado tareas. (el estado es miStore completo ), el cual tiene una parte llamada "tareas" que hace referencia a un estado inicial o slice (rebanadaTareas); el slice ademas de proveer el estado inicial se encargara de contener las funciones correspondientes para hacer los cambios en el estado
+  //  console.log(estadoTareas);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<TareaListas />} />
+            <Route path="/crear-tarea" element={<TareaFormularios />} />
+            <Route path="/editar-tarea/:id" element={<TareaFormularios/>}/>
+          </Routes>
+        </BrowserRouter>
       </header>
     </div>
   );
